@@ -23,9 +23,9 @@ long_desc = open(root_dir + '/README.rst').read()
 
 
 setup(
-    name='django-redactor',
+    name='django-redactoreditor',
     version=version,
-    url='http://github.com/mazelife/django-redactor/',
+    url='https://github.com/mazelife/django-redactoreditor',
     author='James Stevenson',
     author_email='james.m.stevenson at gmail dot com',
     license='CC licence, see LICENSE.txt',

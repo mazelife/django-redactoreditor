@@ -11,7 +11,6 @@ except ImportError:
     from urllib.parse import urljoin
 
 
-
 from django.conf import settings
 from django.forms import Media, Textarea
 from django.utils.safestring import mark_safe
@@ -86,7 +85,6 @@ class RedactorEditor(Textarea):
     def _get_js_media(self):
         js = (
             'django-redactor/redactor/redactor.min.js',
-            'django-redactor/redactor/setup.js',
         )
         if self.include_jquery:
             js = ('django-redactor/lib/jquery-1.9.0.min.js',) + js
@@ -107,6 +105,7 @@ class RedactorEditor(Textarea):
         js = self._get_js_media()
         if self.redactor_settings['lang'] != 'en':
             js += ('django-redactor/redactor/langs/%s.js' % self.redactor_settings['lang'],)
+        js += ('django-redactor/redactor/setup.js',)
         css = {
             'screen': [
                 'django-redactor/redactor/css/redactor.css',
@@ -133,6 +132,7 @@ class AdminRedactorEditor(RedactorEditor):
         js = self._get_js_media()
         if self.redactor_settings['lang'] != 'en':
             js += ('django-redactor/redactor/langs/%s.js' % self.redactor_settings['lang'],)
+        js += ('django-redactor/redactor/admin_setup.js',)
         css = {
             'screen': [
                 'django-redactor/redactor/css/redactor.css',

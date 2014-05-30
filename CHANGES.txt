@@ -11,3 +11,5 @@ v1.2.2, Nov 1, 2012 -- Fixes a bug where adding custom CSS file to the editable 
 v1.2.5, Jan 16, 2014 -- Updates Redactor to 9.1.9
 
 v1.2.6, Apr 24, 2014 -- Python 3 compatibility added, bug with translations fixed.
+
+v1.2.7, June 10, 2014 -- Fixes bug in adding inlines using a redactor widget in the Django admin.

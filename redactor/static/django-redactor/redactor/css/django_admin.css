@@ -1,10 +1,18 @@
 .redactor_box {
+    display: inline-block;
     width: 900px;
 }
 .redactor_box.wide {
-    width: 1200px
+    width: 1200px;
 }
 label.redactor_label {
+    display: inline-block;
     float: none;
     padding-bottom: 10px;
+    padding-right: 5px;
+    vertical-align: top;
+}
+form .aligned .redactor_editor p {
+    margin-left: 0;
+    padding-left: 0;
 }

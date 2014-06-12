@@ -7,7 +7,7 @@ This package helps integrate the `Redactor <http://redactorjs.com/>`_ Javascript
 Installation
 ----------------
 
-#. Pip install: pip install django-redactoreditor (or add the ``redactor`` directory to your Python path)
+#. Pip install: ``pip install django-redactoreditor`` (or add the ``redactor`` directory to your Python path)
 #. Add the ``redactor`` application to your `INSTALLED_APPS <https://docs.djangoproject.com/en/1.4/ref/settings/#installed-apps>`_ setting.
 
 Usage
@@ -24,7 +24,7 @@ The redactor app provides a Django widget called ``RedactorEditor``. It is a dro
         about_me = forms.CharField(widget=RedactorEditor())
 
 
-You can also customize any of the Redactor editor's `settings <http://redactorjs.com/docs/settings/>`_ when instantiating the widget::
+You can also customize any of the Redactor editor's `settings <http://imperavi.com/redactor/docs/settings/>`_ when instantiating the widget::
 
     class MyForm(forms.Form):
 

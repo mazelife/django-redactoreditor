@@ -14,6 +14,8 @@ var Redactor = (function ($) {
         model_redactor_fields.each(function (i) {
             var settings = redactor_attrs[i];
             $(this).parent("div").find("label").addClass("redactor_label");
+            $(this).parents(".form-row").addClass("redactor-form-row");
+            boop = $(this);
             $(this).redactor(settings);
         });
 
@@ -39,12 +41,15 @@ var Redactor = (function ($) {
             // Init redactor on added (or extra) inlines
             inline_group.find(".inline-related:not(.empty-form) textarea.redactor_content").each(function () {
                  $(this).parent("div").find("label").addClass("redactor_label");
+                 $(this).parents(".form-row").addClass("redactor-form-row");
                  $(this).redactor(settings).addClass('redactor_added');
             });
 
             // Init redactor on new inlines
             inline_group.on('click', '.add-row a', function() {
                 inline_group.find('.inline-related:not(.empty-form) textarea.redactor_content:not(.redactor_added)').each(function(){
+                    $(this).parent("div").find("label").addClass("redactor_label");
+                    $(this).parents(".form-row").addClass("redactor-form-row");
                     $(this).redactor(settings).addClass('redactor_added');
                 });
             });

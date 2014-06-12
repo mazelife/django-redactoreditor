@@ -17,35 +17,37 @@ var Redactor = (function ($) {
             $(this).redactor(settings);
         });
 
-        // Inlines
-        var inline_groups_with_redactor = [];
+        // Inline fields
+        var inline_groups_redactor = [];
         var count_inline_fields = 0;
 
         // Fill inline groups with redactor widgets
         $("form > div > .inline-group").each(function() {
             if ($(this).find('.module textarea.redactor_content').length)
-                inline_groups_with_redactor.push($(this));
+                inline_groups_redactor.push($(this));
         });
 
         // Init redactor on inlines
-        $.each(inline_groups_with_redactor, function () {
-            var inline_fields = $(this).find("textarea.redactor_content");
-            var last_inline_field_num = model_redactor_fields.length + (count_inline_fields + inline_fields.length);
-            var settings = redactor_attrs[last_inline_field_num-1];
-            count_inline_fields += inline_fields.length;
+        $.each(inline_groups_redactor, function () {
+            var inline_group = $(this);
+            var inline_group_fields = inline_group.find("textarea.redactor_content");
+            var last_field_num = model_redactor_fields.length + (count_inline_fields + inline_group_fields.length);
+            var settings = redactor_attrs[last_field_num-1];
 
-            // Init redactor on displayed (or extra) inlines
-            $(this).find(".inline-related:not(.empty-form) textarea.redactor_content").each(function () {
+            count_inline_fields += inline_group_fields.length;
+
+            // Init redactor on added (or extra) inlines
+            inline_group.find(".inline-related:not(.empty-form) textarea.redactor_content").each(function () {
                  $(this).parent("div").find("label").addClass("redactor_label");
-                 $(this).redactor(settings);
+                 $(this).redactor(settings).addClass('redactor_added');
             });
 
-            // Init redactor on new added inline
-            $(this).on('DOMNodeInserted', '.inline-related:not(.redactor_label)', function() {
-                $(this).addClass('redactor_label');
-                $(this).find('textarea.redactor_content').redactor(settings);
+            // Init redactor on new inlines
+            inline_group.on('click', '.add-row a', function() {
+                inline_group.find('.inline-related:not(.empty-form) textarea.redactor_content:not(.redactor_added)').each(function(){
+                    $(this).redactor(settings).addClass('redactor_added');
+                });
             });
-
         });
     });
 
